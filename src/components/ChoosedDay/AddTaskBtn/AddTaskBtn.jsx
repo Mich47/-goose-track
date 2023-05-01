@@ -1,10 +1,28 @@
-import { Button, AddTask, Plus } from "./AddTaskBtn.styled"
+import { Button, AddTask, Plus } from './AddTaskBtn.styled';
+import { TaskModal } from '../../TaskModal/TaskModal';
+import { useState } from 'react';
 
-export const AddTaskBtn = () => {
+export const AddTaskBtn = ({ status }) => {
+  const [showModal, setShowModal] = useState(false);
 
-    return(
-        <Button type="button">
-            <Plus>+</Plus><AddTask>Add task</AddTask>
-        </Button>
-    )
-}
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  return (
+    <>
+      <Button type="button" onClick={handleShowModal}>
+        <Plus>+</Plus>
+        <AddTask>Add task</AddTask>
+      </Button>
+
+      {showModal && (
+        <TaskModal handleCloseModal={handleCloseModal} status={status} />
+      )}
+    </>
+  );
+};

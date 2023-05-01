@@ -11,12 +11,24 @@ import * as STC from '../LoginForm/LoginForm.styled';
 import { LoginImg, LoginImg2, Text, Span } from './RegisterForm.styled';
 import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
 import { useState } from 'react';
+import {
+  NAME_REGEX,
+  PASSWORD_REGEX,
+} from '../../constants/joiRegex';
 
 const RegisterValidationSchema = Yup.object().shape({
-  name: Yup.string().required('Required'),
-  email: Yup.string().email('Invalid email').required('Required'),
-  password: Yup.string()
+  name: Yup.string()
+    .matches(NAME_REGEX, 'Not correct, try again')
     .min(3, 'Too Short!')
+    .max(16, 'Too Long!')
+    .required('Name is required'),
+  email: Yup.string().email('This is an ERROR email').required('Required'),
+  password: Yup.string()
+    .matches(
+      PASSWORD_REGEX,
+      'must contain minimum 6 characters,at least 1 letter and 1 number'
+    )
+    .min(6, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required'),
 });

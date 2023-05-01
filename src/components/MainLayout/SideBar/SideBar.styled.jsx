@@ -13,6 +13,7 @@ export const Container = styled.div`
 
   @media (min-width: 768px) {
     width: 289px;
+    padding: 32px;
   }
   @media (max-width: 1279px) {
     left: 0;
@@ -69,24 +70,32 @@ export const LogoImg = styled.img`
   height: 35px;
 
   @media (min-width: 768px) {
-    margin-right: 10px;
     width: 60px;
     height: 58px;
+  }
+
+  @media (min-width: 1280px) {
+    margin-right: 10px;
+    width: 71px;
+    height: 68px;
   }
 `;
 
 export const LogoTxt = styled.h1`
   font-family: var(--secondary-font);
+  font-weight: 400;
   font-size: 16px;
   line-height: 22px;
 
   color: var(--accent-text-color);
 
-  text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
-    0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
+  text-shadow: var(--logo-txt-shadow);
 
   @media (min-width: 768px) {
-    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  @media (min-width: 1280px) {
     font-size: 24px;
     line-height: 24px;
   }

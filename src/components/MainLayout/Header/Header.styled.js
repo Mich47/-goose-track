@@ -5,26 +5,20 @@ export const HeaderStyled = styled.header`
   align-items: center;
   justify-content: space-between;
   max-width: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 24px;
-  margin-bottom: 64px;
-
-  @media (min-width: 768px) {
-    padding-left: 32px;
-    padding-right: 32px;
-  }
+  padding-top: 4px;
+  padding-bottom: 32px;
 
   @media (min-width: 1280px) {
-    padding-top: 40px;
+    min-height: 100px;
+    padding-top: 8px;
   }
 `;
 export const Overlay = styled.div`
-display: none;
-@media (min-width: 1280px) {
-  display: block;
-}
-`
+  display: none;
+  @media (min-width: 1280px) {
+    display: block;
+  }
+`;
 
 export const HeaderWrapper = styled.div`
   display: flex;
@@ -58,10 +52,10 @@ export const Text = styled.p`
   line-height: 18px;
 `;
 
-export const SpanStyled =styled.span`
-font-family: inherit;
-color: var(--accent-span-text-color);
-`
+export const SpanStyled = styled.span`
+  font-family: inherit;
+  color: var(--accent-span-text-color);
+`;
 
 export const UserName = styled.h2`
   font-family: var(--primary-font);

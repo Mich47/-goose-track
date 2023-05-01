@@ -33,6 +33,7 @@ export const authLogin = createAsyncThunk(
       const { data } = await axios.post('/auth/login', values);
 
       setAuthHeader(data.token);
+
       return { ...data };
     } catch (error) {
       return rejectWithValue(error.response.data.message || error.message);
@@ -45,7 +46,8 @@ export const authLogout = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       await axios.post('/user/logout');
-      axios.defaults.headers.common.Authorization = '';
+
+      setAuthHeader('');
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -57,12 +59,16 @@ export const refreshUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const token = state.auth.token;
+
     if (token === null) {
       return thunkAPI.rejectWithValue('Error authorization');
     }
+
+    setAuthHeader(token);
+
     try {
-      setAuthHeader(token);
       const { data } = await axios.get('/user/current');
+
       return { ...data };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -73,9 +79,22 @@ export const refreshUser = createAsyncThunk(
 export const userForm = createAsyncThunk(
   'account',
   async (values, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
+
+    if (token === null) {
+      return thunkAPI.rejectWithValue('Error authorization');
+    }
+
+    setAuthHeader(token);
+
     try {
-      const { data } = await axios.patch('/user/info', values);
-      setAuthHeader(data.token);
+      const { data } = await axios.patch('/user/info', values, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
       return { ...data };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

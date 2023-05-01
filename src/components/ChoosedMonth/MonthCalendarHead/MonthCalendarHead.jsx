@@ -1,7 +1,5 @@
-import { CalendarHead } from "components/CalendarHead/CalendarHead"
+import { CalendarHead } from 'components/CalendarHead/CalendarHead';
 
 export const MonthCalendarHead = () => {
-    return(
-  <CalendarHead />
-    )
-}
+  return <CalendarHead />;
+};

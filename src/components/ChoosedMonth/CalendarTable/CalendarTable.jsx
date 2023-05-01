@@ -1,11 +1,8 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Calendar,
   Days,
-  Today,
-  DaysOfMonth,
   OtherMonthStyledLink,
-  Wrapper,
   CurrentMonthStyledLink,
 } from './CalendarTable.styled';
 import {
@@ -15,25 +12,26 @@ import {
   startOfWeek,
   endOfWeek,
   isSameMonth,
-  isToday,
   parseISO,
   eachDayOfInterval,
   formatISO,
-  isThisMonth,
-  isFirstDayOfMonth,
 } from 'date-fns';
 import {
   selectCurrentMonth,
+  selectIsLoading,
   selectTasks,
 } from 'redux/calendar/calendar.selectors';
-import { useParams } from 'react-router-dom';
 import { CalendarTableItem } from './CalendarTableItem';
+import { addIndexCurrentDay } from 'redux/calendar/calendar.slice';
+import { addChoosedDay } from 'redux/calendar/calendar.slice';
 
 export const CalendarTable = () => {
+  const dispath = useDispatch();
   const currentMonth = parseISO(useSelector(selectCurrentMonth));
-  const firsDayOfMonth = useParams()
-  const tasksOfMonth = useSelector(selectTasks)
-  
+  const isLoading = useSelector(selectIsLoading);
+
+  const tasksOfMonth = useSelector(selectTasks);
+
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(currentMonth);
 
@@ -42,40 +40,41 @@ export const CalendarTable = () => {
     end: endOfWeek(monthEnd, { weekStartsOn: 1 }),
   });
 
-
-
   return (
-    <Calendar>
-      {daysInMonth?.map((day, idx) => {
-        
-        const StyledLink = !isSameMonth(day, currentMonth)
-          ? OtherMonthStyledLink
-          : CurrentMonthStyledLink;
-          
-        const AllDays =  isThisMonth(new Date(firsDayOfMonth.currentDate)) ? 
-        (isToday(day) ? Today : DaysOfMonth) :
-        (isFirstDayOfMonth(new Date(day)) ? Today : DaysOfMonth)
-       
-        const choosedDay = new Date(day)
+    <>
+      {isLoading && <p>Loading.....</p>}
+      <Calendar>
+        {daysInMonth?.map((day, idx) => {
+          const StyledLink = !isSameMonth(day, currentMonth)
+            ? OtherMonthStyledLink
+            : CurrentMonthStyledLink;
 
-        return (
-          <Days key={idx}>
-            <StyledLink to={`/calendar/day/${formatISO(new Date(choosedDay),
-              { representation: 'date' })}`}>
-              <Wrapper>
-              {isSameMonth(day, currentMonth) && (
-                  <>
-                    <AllDays>{format(day, 'd')}</AllDays>
-                    <CalendarTableItem
-                      dayTasks={tasksOfMonth[Number(format(day, 'd'))]}
-                    />
-                  </>
+          const choosedDay = new Date(day);
+
+          return (
+            <Days key={idx}>
+              <StyledLink
+                to={`/calendar/day/${formatISO(new Date(choosedDay), {
+                  representation: 'date',
+                })}`}
+                onClick={() => {
+                  dispath(addIndexCurrentDay(Number(format(day, 'd'))));
+                  dispath(addChoosedDay(formatISO(new Date(choosedDay))), {
+                    representation: 'date',
+                  });
+                }}
+              >
+                {isSameMonth(day, currentMonth) && (
+                  <CalendarTableItem
+                    day={day}
+                    dayTasks={tasksOfMonth[Number(format(day, 'd'))]}
+                  />
                 )}
-              </Wrapper>
-            </StyledLink>
-          </Days>
-        );
-      })}
-    </Calendar>
+              </StyledLink>
+            </Days>
+          );
+        })}
+      </Calendar>
+    </>
   );
 };

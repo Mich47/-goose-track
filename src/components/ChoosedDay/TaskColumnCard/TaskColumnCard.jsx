@@ -24,7 +24,7 @@ export const TaskColumnCard = ({
           </TaskAvatarWrapper>
           <TaskPriority priority={priority}>{priority}</TaskPriority>
         </Wrapper>
-        <TaskToolbar {...other} />
+        <TaskToolbar title={title} priority={priority} {...other} />
       </Wrapper>
     </Container>
   );

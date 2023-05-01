@@ -46,6 +46,10 @@ export const Label = styled.label`
   @media (min-width: 768px) {
     margin-bottom: 18px;
   }
+  // margin-bottom: 24px;
+  // @media (min-width: 768px) {
+  //   margin-bottom: 18px;
+  // }
 `;
 
 export const Span = styled.span`
@@ -55,7 +59,8 @@ export const Span = styled.span`
   font-weight: 600;
   font-size: 12px;
   line-height: 15px;
-  color: var(--primary-text-color);
+  color: ${props =>
+    props.error ? 'var(--text-error-color)' : 'var(--primary-text-color)'};
 
   @media (min-width: 768px) {
     margin-top: 18px;
@@ -84,11 +89,17 @@ export const Form = styled.form`
 
 export const Input = styled.input`
   background-color: rgba(255, 255, 255, 0);
-  border: var(--border-auth);
+  /* border: var(--border-auth); */
+  border: ${props =>
+    props.error ? 'var(--border-auth-error)' : 'var(--border-auth)'};
   border-radius: 8px;
   padding: 14px;
   width: 100%;
   outline: none;
+
+  &:hover {
+    border: 1px solid var(--primary-text-color);
+  }
 
   &::placeholder {
     font-family: var(--primary-font);
@@ -117,7 +128,7 @@ export const Button = styled.button`
 
   &:hover,
   :focus {
-    box-shadow: 4px 2px 16px rgba(136, 165, 191, 1);
+    background: var(--hover-btn-background-color);
   }
 
   @media (min-width: 768px) {
@@ -154,11 +165,10 @@ export const Svg = styled.svg`
   }
 `;
 
-
 export const CloudSvg = styled.svg`
   display: none;
 
-  @media (min-width: 1440px) {
+  @media (min-width: 1280px) {
     display: block;
     width: 182px;
     height: 144px;
@@ -171,7 +181,7 @@ export const CloudSvg = styled.svg`
 export const ImgRocketSvg = styled.img`
   display: none;
 
-  @media (min-width: 1440px) {
+  @media (min-width: 1280px) {
     display: inline-block;
     width: 178px;
     height: 414px;
@@ -183,18 +193,23 @@ export const ImgRocketSvg = styled.img`
 `;
 
 export const Errors = styled.span`
+  width: 100%;
+  height: 24px;
   color: red;
   font-family: var(--primary-font);
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.2;
+  @media (min-width: 768px) {
+    height: 18px;
+  }
 `;
 
 export const GooseText = styled.p`
   display: none;
 
-  @media (min-width: 1440px) {
+  @media (min-width: 1280px) {
     display: inline-block;
     position: fixed;
     bottom: 442px;
@@ -217,6 +232,6 @@ export const GooseTextAccent = styled.span`
 
 export const ButtonEye = styled.button`
 position: absolute;
-  top: 65%;
+  top: 50%;
   left: 80%;  
 `

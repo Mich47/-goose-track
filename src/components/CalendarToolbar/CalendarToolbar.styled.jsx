@@ -1,7 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  display  : flex;
-  flex-direction: column;
-  gap: 18px;
+  display: flex;
+  @media (max-width: 767px) {
+    flex-direction: column;
+    gap: 18px;
+  }
+  @media (min-width: 768px) {
+    align-items: center;
+    justify-content: space-between;
+  }
 `;

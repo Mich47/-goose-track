@@ -1,75 +1,66 @@
 import styled from 'styled-components';
-
+import { createGlobalStyle } from 'styled-components';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 335px;
+  justify-content: center;
+  gap: 40px;
   width: 100%;
-  //max-height: 653px;
-  margin: 0 auto 40px auto;
-  padding: 0 20px;
-  background-color: #ffffff;
+  margin-top: 51px;
+  padding: 40px 20px;
+  background-color: var(--primary-background-color);
   border-radius: 16px;
   position: relative;
 
-
   @media (min-width: 768px) {
-    max-width: 704px;
-    //max-height: 854px;
-    padding: 0 ;
-    position: relative;
-    margin-bottom: 35px;
+    margin-top: 0;
+    padding: 40px;
+    position: static;
   }
 
-  @media (min-width: 1440px) {
-    max-width: 1087px;
-    //max-height: 752px;
-    position: relative;
-    margin-left: 32px;
-    margin-right: 32px;
-    margin-bottom: 32px;
+  @media (min-width: 1280px) {
+    gap: 60px;
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
 `;
 
 export const FlexInput = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
+  flex-direction: column;
   justify-content: center;
+  gap: 18px;
+
   @media (min-width: 768px) {
     gap: 24px;
-  }
-  @media (min-width: 1440px) {
-    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    width: 758px;
+    max-width: 732px;
+  }
+
+  @media (min-width: 876px) {
     justify-content: space-between;
   }
 `;
 
-export const FlexChild = styled.div`
-  @media (min-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-  @media (min-width: 1440px) {
-    display: flex;
-    flex-wrap: wrap;
-    width: 354px;
-  }
+export const LabelSpan = styled.span`
+  margin-bottom: 8px;
+  color: var(--secondary-text-color);
 `;
 
 export const Label = styled.label`
   font-family: 'Inter', serif;
   font-size: 12px;
   line-height: 1.2;
-  display: inline-block;
-  margin: 0 0 8px 0;
-  padding: 0 2px;
+  display: flex;
+  flex-direction: column;
+  @media (min-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 export const Input = styled.input`
@@ -77,33 +68,51 @@ export const Input = styled.input`
   font-weight: 600;
   font-size: 14px;
   line-height: 1.3;
-  // margin-bottom: 18px;
-  border: 1px solid rgba(17, 17, 17, 0.1);
+  outline: none;
+  border: var(--border);
   border-radius: 8px;
-  width: 299px;
   height: 42px;
-  padding: 14px;
+  padding: 12px 12px 12px 14px;
   box-sizing: border-box;
+  color: var(--primary-text-color);
+  background-color: var(--primary-background-color);
+
+  &::placeholder {
+    font-family: var(--primary-font);
+    font-size: 14px;
+    line-height: 1.29;
+    color: var(--auth-placeholder-color);
+  }
+
+  @media (max-width: 374px) {
+    max-width: 298px;
+  }
+
+  @media (min-width: 375px) {
+    width: 299px;
+  }
 
   @media (min-width: 768px) {
     width: 354px;
     height: 46px;
-    padding-left: 18px;
-    // margin-bottom: 24px;
+    padding-left: 14px 14px 14px 18px;
+    font-size: 16px;
   }
 
-  &:hover,
-  :focus {
-    border-color: var(--accent-background-color);
-  }
-
-  &:nth-last-child(5) {
-    margin-bottom: 0;
-  }
+  //&:hover,
+  //:focus {
+  //  border-color: var(--accent-background-color);
+  //}
 `;
 
 export const AvatarBlock = styled.div`
-  @media (min-width: 1440px) {
+  margin-top: -76px;
+
+  @media (min-width: 768px) {
+    margin-top: 0;
+  }
+
+  @media (min-width: 1280px) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -118,8 +127,11 @@ export const InputAva = styled.input`
 
 export const DefaultSvg = styled.svg`
   fill: var(--auth-bg-color);
-  width: 100%;
-  height: 100%;
+  width: 50%;
+  height: 50%;
+  position: relative;
+  top: 25%;
+  left: 25%;
   object-fit: cover;
 `;
 
@@ -127,71 +139,68 @@ export const LabelImg = styled.img`
   cursor: pointer;
   width: 100%;
   height: 100%;
+  border-radius: 50%;
+  /* overflow: hidden; */
   object-fit: cover;
 `;
 
 export const LabelAva = styled.label`
+  position: relative;
   border-radius: 50%;
-  border: 2px solid var(--accent-text-color);
+  border: 2px solid var(--accent-background-color);
   width: 72px;
   height: 72px;
 
   display: block;
-  margin: -36px auto 0 auto;
-  overflow: hidden;
-  background-color: var(--primary-background-color);
+  /* margin: -36px auto 0 auto; */
+  /* overflow: hidden; */
+  background-color: var(--avatar-background-color);
 
   @media (min-width: 768px) {
     width: 124px;
     height: 124px;
-    margin: 40px auto 0 auto;
-  }
-
-  @media (min-width: 1440px) {
-    width: 124px;
-    height: 130px;
-    margin-top: 60px;
   }
 `;
 
-export const ButtonPlus = styled.button`
+export const ButtonPlus = styled.div`
   width: 14px;
   height: 14px;
   background-color: var(--accent-background-color);
   border-radius: 50%;
-  border: none;
   color: var(--btn-text-color);
 
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   position: absolute;
-  top: 23px;
-  right: 148px;
+  bottom: -4px;
+  right: 15px;
 
   @media (min-width: 768px) {
-    top: 148px;
-    right: 317px;
-  }
-
-  @media (min-width: 1440px) {
-    top: 172px;
-    right: 505px;
-  }
-
-  & span {
-    // position: relative;
-    vertical-align: middle;
-    line-height: 0.5;
-    // bottom: 3px;
-    position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) 
+    bottom: -6px;
+    right: 24px;
+    width: 24px;
+    height: 24px;
   }
 `;
 
+export const PlusSvg = styled.svg`
+  fill: currentColor;
+  stroke: currentColor;
+  width: 8px;
+  height: 8px;
+
+  @media (min-width: 768px) {
+    width: 18px;
+    height: 18px;
+  }
+`;
 
 export const Button = styled.button`
   font-family: 'Inter', sans-serif;
-  margin: 40px auto;
+  /* margin: 40px auto; */
   display: block;
   width: 100%;
   max-width: 195px;
@@ -213,22 +222,22 @@ export const Button = styled.button`
     // margin-bottom: 40px;
   }
 
-  @media (min-width: 1440px) {
-    margin: 88px auto 60px auto;
+  @media (min-width: 1280px) {
+    /* margin: 64px auto 60px auto; */
   }
 `;
-
 
 export const TitleAvatar = styled.h3`
   font-weight: 700;
   font-size: 18px;
   line-height: 1;
-  color: #343434;
+  //color: #343434;
   margin: 14px 0 0 0;
   text-align: center;
+  color: var(--primary-text-color);
 
   @media (min-width: 768px) {
-    margin: 20px 0 0 0 ;
+    margin: 20px 0 0 0;
   }
 `;
 
@@ -237,17 +246,285 @@ export const TextAvatar = styled.p`
   font-size: 14px;
   line-height: 18px;
   color: var(--secondary-text-color);
-  margin: 4px 0 40px 0;
+  margin-top: 4px;
   text-align: center;
 
   @media (min-width: 768px) {
-    margin: 8px 0 40px 0;
-  }
-
-  @media (min-width: 1440px) {
-    margin-bottom: 44px;
+    margin-top: 8px;
   }
 `;
 
+export const Errors = styled.p`
+  color: red;
+  font-size: 10px;
+`;
 
+export const GlobalStyles = createGlobalStyle`
+.react-datepicker__wrapper {
+  position: relative;
+}
 
+.react-datepicker {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-1%, 0%);
+  font-family: (var--primary-font);
+  padding: 12px;
+  border-radius: 16px;
+  background-color: var(--accent-background-color);
+
+  @media (min-width: 768px) {
+    padding: 18px;
+    transform: translate(-8%, 0%);
+  }
+}
+.react-datepicker__month-container {
+  float: inherit;
+  box-sizing: inherit;
+}
+.react-datepicker__header {
+  font-family: var(--primary-font);
+
+  text-align: center;
+  background-color: var(--accent-background-color);
+
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+  position: relative;
+}
+.react-datepicker__day-names {
+  display: flex;
+  border-bottom: var(--border);
+  padding: 12px 0;
+  justify-content: space-between;
+
+  @media (min-width: 768px) {
+    padding: 16px 0;
+  }
+}
+.react-datepicker__header:not(.react-datepicker__header--has-time-select) {
+  border-top-right-radius: 16px;
+  border-bottom: 0px;
+  padding: 0;
+}
+.react-datepicker__current-month {
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: var(--btn-text-color);
+
+  @media (min-width: 768px) {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+.react-datepicker__day-name {
+  font-family: Inter;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: center;
+  margin: 0;
+  color: var(--btn-text-color);
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+.react-datepicker__navigation {
+  margin-top: 7px;
+
+  @media (min-width: 768px) {
+    margin-top: 17px;
+  }
+}
+
+.react-datepicker__navigation--previous {
+  left: 7px;
+
+  @media (min-width: 768px) {
+    left: 17px;
+  }
+}
+
+.react-datepicker__navigation--next {
+  right: 7px;
+
+  @media (min-width: 768px) {
+    right: 17px;
+  }
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: var(--btn-text-color);
+  transition: border-color var(--animation);
+
+  @media (max-width: 767px) {
+    border-width: 2px 2px 0 0;
+    height: 9px;
+    width: 9px;
+  }
+
+  @media (min-width: 768px) {
+    margin-top: -2px;
+    height: 12px;
+    width: 12px;
+  }
+}
+
+.react-datepicker__navigation-icon::before:hover:focus {
+  border-color: var(--btn-text-color);
+}
+
+.react-datepicker__week {
+  display: flex;
+  gap: 7px;
+
+  color: var(--btn-text-color);
+  justify-content: space-between;
+}
+
+.react-datepicker__day {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0em;
+  text-align: center;
+  color: var(--btn-text-color);
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 32px;
+  transition: color var(--animation), background-color var(--animation);
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+    line-height: 24px;
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+  }
+}
+
+.react-datepicker__month {
+  display: flex;
+  gap: 7px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 16px;
+  margin: 0;
+
+  @media (min-width: 768px) {
+    padding-top: 20px;
+  }
+}
+.react-datepicker__day--selected {
+  /* transform: scale(1); */
+  /* border-radius: 50%; */
+  background-color: var(--btn-text-color);
+  color: var(--accent-background-color);
+  font-size: 14px;
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+}
+
+.react-datepicker__day--selected:hover {
+  border-radius: 50%;
+  background-color: white;
+}
+
+.react-datepicker__day:hover {
+  border-radius: 50%;
+  background-color: white;
+  color: var(--accent-background-color);
+}
+.react-datepicker__day--keyboard-selected {
+  border-radius: 50%;
+  background-color: white;
+  color: var(--accent-background-color);
+}
+
+.react-datepicker__day--weekend {
+  opacity: 50%;
+}
+.react-datepicker__day--outside-month {
+  color: var(--accent-background-color);
+  background-color: transparent;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.react-datepicker__view-calendar-icon input {
+  padding: 6px 10px 5px 13px;
+}
+
+.react-datepicker__triangle {
+  visibility: hidden;
+}
+  
+`;
+
+export const StyledDatePick = styled(DatePicker)`
+  position: relative;
+  width: 299px;
+  height: 42px;
+  border: var(--border);
+  border-radius: 8px;
+  font-family: 'Inter';
+  font-style: normal;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.3;
+  outline: none;
+  padding: 12px 12px 12px 14px;
+  box-sizing: border-box;
+  color: var(--primary-text-color);
+  background-color: var(--primary-background-color);
+
+  &:focus-visible {
+    outline: none;
+    border: var(--border);
+    border-radius: 8px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 354px;
+    height: 46px;
+    font-size: 16px;
+    line-height: 1.12;
+    adding: 14px 14px 14px 18px;
+  }
+`;
+
+export const StyledIconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  transform: translate(875%, 95%);
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--primary-background-color);
+  /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); */
+  cursor: pointer;
+  @media screen and (min-width: 768px) {
+    transform: translate(1045%, 108%);
+  }
+`;
+
+export const BirthdayContainer = styled.div`
+  position: relative;
+`;

@@ -14,7 +14,7 @@ export const LinkStyled = styled(Link)`
 
   &:hover,
   :focus {
-    color: var(--primary-background-color);
+    color: var(--hover-btn-background-color);
   }
 
   @media (min-width: 768px) {

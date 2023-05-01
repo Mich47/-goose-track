@@ -6,8 +6,15 @@ import { selectCurrentMonth } from 'redux/calendar/calendar.selectors';
 
 export const RestrictedRoute = () => {
   const token = useSelector(selectAuthToken);
-  const currentDate = useSelector(selectCurrentMonth)
+  const currentDate = useSelector(selectCurrentMonth);
 
-  return token ? <Navigate to={`/calendar/month/${formatISO(new Date(currentDate),
-     { representation: 'date' })}`} /> : <Outlet />;
+  return token ? (
+    <Navigate
+      to={`/calendar/month/${formatISO(new Date(currentDate), {
+        representation: 'date',
+      })}`}
+    />
+  ) : (
+    <Outlet />
+  );
 };
