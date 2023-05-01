@@ -7,8 +7,11 @@ export const Input = styled.input`
 export const Svg = styled.svg`
   width: 20px;
   height: 20px;
-  /* margin-right: 14px; */
   fill: var(--accent-background-color);
+  &:hover,
+  :focus {
+    fill: #156ae9;
+  }
 
   @media screen and (min-width: 768px) {
     width: 26px;

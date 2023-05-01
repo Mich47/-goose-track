@@ -10,6 +10,7 @@ import LoginGoose from '../../images/login-goose-.svg';
 import * as STC from '../LoginForm/LoginForm.styled';
 import { LoginImg, LoginImg2, Text, Span } from './RegisterForm.styled';
 import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
+import { useState } from 'react';
 
 const RegisterValidationSchema = Yup.object().shape({
   name: Yup.string().required('Required'),
@@ -21,6 +22,7 @@ const RegisterValidationSchema = Yup.object().shape({
 });
 export const RegisterForm = () => {
   const dispatch = useDispatch();
+  const [isPass, setIsPass] = useState(true);
 
   return (
     <>
@@ -96,7 +98,7 @@ export const RegisterForm = () => {
                   <STC.Input
                     id="password"
                     name="password"
-                    type="password"
+                    type={isPass ? 'password' : 'text'}
                     required
                     autoComplete="off"
                     placeholder="Enter password"
@@ -106,6 +108,29 @@ export const RegisterForm = () => {
                   <STC.Errors>
                     {errors.password && touched.password && errors.password}
                   </STC.Errors>
+                  <STC.ButtonEye
+                    type="button"
+                    onClick={() => {
+                      isPass ? setIsPass(false) : setIsPass(true);
+                    }}
+                  >
+                    {' '}
+                    {isPass ? (
+                      <img
+                        src="https://img.icons8.com/windows/32/null/eyelashes-2d--v2.png"
+                        alt="eye"
+                        width="16"
+                        height="16"
+                      />
+                    ) : (
+                      <img
+                        src="https://img.icons8.com/ultraviolet/40/null/visible.png"
+                        alt="eye"
+                        width="16"
+                        height="16"
+                      />
+                    )}
+                  </STC.ButtonEye>
                 </STC.Label>
 
                 <STC.Button type="submit">

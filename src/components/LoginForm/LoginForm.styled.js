@@ -41,6 +41,8 @@ export const Label = styled.label`
   display: flex;
   flex-direction: column;
   margin-bottom: 24px;
+  position: relative;
+  
   @media (min-width: 768px) {
     margin-bottom: 18px;
   }
@@ -71,6 +73,7 @@ export const Form = styled.form`
   margin-bottom: 18px;
   background-color: #fff;
   border-radius: 8px;
+  
 
   @media (min-width: 768px) {
     padding: 40px;
@@ -211,3 +214,9 @@ export const GooseTextAccent = styled.span`
   color: var(--accent-text-color);
   font-style: italic;
 `;
+
+export const ButtonEye = styled.button`
+position: absolute;
+  top: 65%;
+  left: 80%;  
+`
