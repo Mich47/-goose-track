@@ -18,18 +18,15 @@ import {
 } from 'date-fns';
 import {
   selectCurrentMonth,
-  // selectIsLoading,
   selectTasks,
 } from 'redux/calendar/calendar.selectors';
 import { CalendarTableItem } from './CalendarTableItem';
-// import { DotsSpinner } from '../../Loader/Loader';
 import { addIndexCurrentDay } from 'redux/calendar/calendar.slice';
 import { addChoosedDay } from 'redux/calendar/calendar.slice';
 
 export const CalendarTable = () => {
   const dispath = useDispatch();
   const currentMonth = parseISO(useSelector(selectCurrentMonth));
-  // const isLoading = useSelector(selectIsLoading);
 
   const tasksOfMonth = useSelector(selectTasks);
 
@@ -43,7 +40,6 @@ export const CalendarTable = () => {
 
   return (
     <>
-      {/* {isLoading && <DotsSpinner />} */}
       <Calendar>
         {daysInMonth?.map((day, idx) => {
           const StyledLink = !isSameMonth(day, currentMonth)
