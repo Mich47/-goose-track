@@ -20,7 +20,7 @@ export const Button = styled.button`
   &:hover,
   :focus {
     box-shadow: 4px 2px 16px rgba(136, 165, 191, 1);
-    background-color: var(--hover-btn-background-color);
+    background-color: var(--hover-active-item-sidebar-background);
   }
 `;
 

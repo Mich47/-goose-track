@@ -5,7 +5,11 @@ import * as STC from './TaskStatusModal.styled';
 import { useDispatch } from 'react-redux';
 import { editTaskOperation } from '../../redux/calendar/calendar.operations';
 
-export const TaskStatusModal = ({ handleCloseStatusModal, ...props }) => {
+export const TaskStatusModal = ({
+  editRef,
+  handleCloseStatusModal,
+  ...props
+}) => {
   const dispatch = useDispatch();
 
   const currentStatus = props.status;
@@ -20,7 +24,11 @@ export const TaskStatusModal = ({ handleCloseStatusModal, ...props }) => {
 
   return (
     <>
-      <Modal onClose={handleCloseStatusModal} isCloseBtn={false}>
+      <Modal
+        onClose={handleCloseStatusModal}
+        isCloseBtn={false}
+        editRef={editRef}
+      >
         <STC.Ul>
           {filteredStatuses.map(status => (
             <li key={status.id}>

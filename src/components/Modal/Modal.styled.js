@@ -29,7 +29,9 @@ export const ModalContainer = styled.div`
 
 export const SmallModalContainer = styled.div`
   position: absolute;
-  padding: 40px 18px;
+  top: ${props => `${props.top}px`};
+  left: ${props => `${props.left}px`};
+  padding: 14px;
   width: fit-content;
   height: fit-content;
   border: 1px solid var(--modal-border-color);
@@ -38,7 +40,7 @@ export const SmallModalContainer = styled.div`
   box-shadow: 0px 0px 16px 4px var(--modal-shadow-color);
   z-index: 1000;
   @media screen and (min-width: 768px) {
-    padding: 40px 28px;
+    padding: 20px 24px;
   }
 `;
 

@@ -9,7 +9,7 @@ import {
 } from './Modal.styled';
 import Icons from '../../images/sprite.svg';
 
-export const Modal = ({ children, onClose, isCloseBtn = true }) => {
+export const Modal = ({ children, onClose, isCloseBtn = true, editRef }) => {
   const memoKeyClose = useCallback(handleKeyClose, [handleKeyClose]);
 
   useEffect(() => {
@@ -48,7 +48,9 @@ export const Modal = ({ children, onClose, isCloseBtn = true }) => {
           {children}
         </ModalContainer>
       ) : (
-        <SmallModalContainer>{children}</SmallModalContainer>
+        <SmallModalContainer left={editRef.left} top={editRef.top}>
+          {children}
+        </SmallModalContainer>
       )}
     </Overlay>
   );
@@ -58,4 +60,8 @@ Modal.propTypes = {
   children: PropTypes.node,
   onClose: PropTypes.func,
   isCloseBtn: PropTypes.bool,
+  editRef: PropTypes.object({
+    left: PropTypes.string,
+    top: PropTypes.string,
+  }),
 };

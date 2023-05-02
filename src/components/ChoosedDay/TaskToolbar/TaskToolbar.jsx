@@ -4,7 +4,7 @@ import {
   ToolbarSvg,
 } from './TaskToolbar.styled';
 import icons from 'images/sprite.svg';
-import { useState } from 'react';
+import { createRef, useState } from 'react';
 import { TaskModal } from '../../TaskModal/TaskModal';
 import { TaskDelete } from 'components/TaskDelete/TaskDelete';
 import { TaskStatusModal } from 'components/TaskStatusModal/TaskStatusModal';
@@ -13,6 +13,8 @@ export const TaskToolbar = props => {
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showStatusModal, setShowStatusModal] = useState(false);
+  const [editElement, setEditElement] = useState(null);
+  const editRef = createRef();
 
   const handleShowModal = () => {
     setShowModal(true);
@@ -34,7 +36,19 @@ export const TaskToolbar = props => {
         <li>
           <TaskToolbarButton
             type="button"
-            onClick={() => setShowStatusModal(true)}
+            ref={editRef}
+            onClick={() => {
+              // Розміри і координати поточного елементи
+              const element = editRef.current.getBoundingClientRect();
+              // Якщо відстань зліва + 165px > за ширину екрану
+              // то зменшуємо на 145, інакше відстань зліва без змін
+              const elemLeft =
+                element.left + 165 > window.innerWidth
+                  ? element.left - 145
+                  : element.left;
+              setEditElement({ top: element.top + 24, left: elemLeft });
+              setShowStatusModal(true);
+            }}
           >
             <ToolbarSvg>
               <use xlinkHref={`${icons}#task-move-sf`}></use>
@@ -75,6 +89,7 @@ export const TaskToolbar = props => {
       )}
       {showStatusModal && (
         <TaskStatusModal
+          editRef={editElement}
           handleCloseStatusModal={handleCloseStatusModal}
           {...props}
         />
