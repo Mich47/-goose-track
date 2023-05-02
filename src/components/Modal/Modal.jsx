@@ -60,7 +60,7 @@ Modal.propTypes = {
   children: PropTypes.node,
   onClose: PropTypes.func,
   isCloseBtn: PropTypes.bool,
-  editRef: PropTypes.object({
+  editRef: PropTypes.shape({
     left: PropTypes.string,
     top: PropTypes.string,
   }),
