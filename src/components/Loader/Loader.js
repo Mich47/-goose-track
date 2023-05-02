@@ -27,9 +27,9 @@ export function DotsSpinner() {
     <DotsOverlay>
       <DotsWrapper>
         <DotsLoader
-          height="80"
-          width="80"
-          radius="9"
+          height="60"
+          width="60"
+          radius="5"
           color="#3E85F3"
           ariaLabel="three-dots-loading"
           wrapperStyle={{}}
