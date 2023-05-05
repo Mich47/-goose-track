@@ -14,8 +14,8 @@ import {
 const authInitState = {
   user: { name: null, email: null },
   token: null,
-  isLoggedIn: false,
-  isRefreshing: false,
+  isLoading: false,
+  error: null,
 };
 
 const authSlice = createSlice({
@@ -23,12 +23,18 @@ const authSlice = createSlice({
   initialState: authInitState,
   extraReducers: builder => {
     builder
-      .addCase(signupUser.pending, (state, _) => state)
+      .addCase(signupUser.pending, (state, _) => {
+        state.isLoading = true;
+      })
       .addCase(signupUser.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
-        state.isLoggedIn = true;
+        state.isLoading = true;
         state.error = null;
+      })
+      .addCase(signupUser.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
       })
       .addCase(authLogin.pending, state => {
         state.isLoading = true;

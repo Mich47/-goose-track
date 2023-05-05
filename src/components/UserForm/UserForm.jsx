@@ -49,8 +49,8 @@ import { toast } from 'react-toastify';
 import { Loader } from 'components/Loader/Loader';
 
 export const UserForm = () => {
-  const [image, setImage] = useState(null);
-  const filePicker = useRef(null);
+  const [image, setImage] = useState();
+  const filePicker = useRef();
   const dispatch = useDispatch();
 
   const [birthdayValidationCompleted, setBirthdayValidationCompleted] =
@@ -58,8 +58,8 @@ export const UserForm = () => {
 
   const name = useSelector(selectUserName);
   const email = useSelector(selectUserEmail);
-  const phone = useSelector(selectUserPhone);
-  const telegram = useSelector(selectUserTelegram);
+  const phone = useSelector(selectUserPhone) || '';
+  const telegram = useSelector(selectUserTelegram) || '';
   const avatar = useSelector(selectUserAvatarURL);
   const birthday = useSelector(selectUserBirthday) || Date.now();
   const isLoading = useSelector(selectIsLoading);
