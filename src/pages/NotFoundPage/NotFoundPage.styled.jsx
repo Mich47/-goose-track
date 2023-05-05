@@ -25,7 +25,7 @@ export const Title = styled.h1`
   font-size: 104px;
   line-height: 100%;
   letter-spacing: -4px;
-  color: #3e85f3;
+  color: var(--accent-text-color);
 
   @media (min-width: 768px) {
     font-size: 204px;
@@ -39,7 +39,7 @@ export const Txt = styled.h2`
   font-size: 32px;
   line-height: 40px;
   text-transform: uppercase;
-  color: #3e85f3;
+  color: var(--accent-text-color);
 
   @media (min-width: 768px) {
     font-size: 40px;

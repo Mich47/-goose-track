@@ -5,13 +5,6 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  /* padding: 40px 18px; */
-  /* width: 303px; */
-  /* width: 100%; */
-  /* background-color: var(--primary-background-color); */
-  /* border: var(--border);
-  border-radius: 8px;
-  box-shadow: 0px 4px 16px rgba(17, 17, 17, 0.1); */
 
   font-family: var(--primary-font);
   font-style: normal;
@@ -21,11 +14,9 @@ export const Form = styled.form`
   color: var(--primary-text-color);
 
   @media (min-width: 375px) {
-    /* padding: 40px 28px; */
     width: 267px;
   }
   @media (min-width: 768px) {
-    /* padding: 40px 28px; */
     width: 396px;
   }
 `;
@@ -56,7 +47,7 @@ export const Span = styled.span`
 
 export const Input = styled.input`
   height: 42px;
-  /* margin-bottom: 14px; */
+
   padding: 14px;
   width: 100%;
   outline: none;
@@ -72,7 +63,6 @@ export const Input = styled.input`
 
   @media (min-width: 768px) {
     height: 46px;
-    /* margin-bottom: 18px; */
   }
 
   &::placeholder {
@@ -125,15 +115,11 @@ export const Button = styled.button`
   }
 
   @media (min-width: 768px) {
-    /* width: 400px; */
     height: 48px;
   }
 `;
 
 export const ButtonCancel = styled.button`
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
   width: 100%;
   height: 42px;
   padding: 12px;
@@ -156,7 +142,6 @@ export const ButtonCancel = styled.button`
   }
 
   @media (min-width: 768px) {
-    /* width: 400px; */
     height: 48px;
   }
 `;
@@ -185,12 +170,8 @@ export const RadioButtonGroup = styled.div`
   align-items: center;
   justify-content: flex-start;
   gap: 16px;
-  /* margin-bottom: 32px; */
-  padding-bottom: 20px;
 
-  @media (min-width: 768px) {
-    /* margin-top: 10px; */
-  }
+  padding-bottom: 20px;
 `;
 
 export const RadioButtonLabel = styled.label`
@@ -232,8 +213,6 @@ export const RadioButtonInput = styled.input`
       left: -20px;
     }
 
-    /* transition: outline var(--animation); */
-
     border: 1px solid var(--primary-background-color);
     ${({ value }) => {
       switch (value) {
@@ -254,7 +233,6 @@ export const RadioButtonInput = styled.input`
     position: absolute;
     height: 12px;
     width: 12px;
-    /* border-radius: 50%; */
 
     outline: 2px solid;
     @media (min-width: 768px) {

@@ -13,7 +13,7 @@ export default function NotFoundPage() {
         srcSet={`${ImgLeft} 1x, ${ImgLeft2x} 2x, ${ImgLeft3x} 3x`}
         src={ImgLeft}
         className="left"
-        alt="Not foutn page image"
+        alt="Not found page image"
       />
       <STC.Box>
         <STC.Title>404</STC.Title>
@@ -24,7 +24,7 @@ export default function NotFoundPage() {
         srcSet={`${ImgRight} 1x, ${ImgRight2x} 2x, ${ImgRight3x} 3x`}
         src={ImgRight}
         className="right"
-        alt="Not foutn page image"
+        alt="Not found page image"
       />
     </STC.Container>
   );

@@ -24,7 +24,7 @@ export const LoginImg2 = styled.svg`
     position: fixed;
     bottom: 233px;
     left: 80px;
-    // transform: matrix(0.91, -0.41, -0.41, -0.91, 0, 0);
+
     transform: rotate(-40deg);
   }
 `;
@@ -45,7 +45,7 @@ export const Text = styled.p`
     font-weight: 600;
     font-size: 14px;
     line-height: 1.14;
-    color: var (--primary-text-color);
+    color: var(--primary-text-color);
     transform: rotate(-27deg);
   }
 `;
@@ -55,7 +55,5 @@ export const Span = styled.span`
   font-weight: 600;
   font-size: 14px;
   line-height: 1.14;
-  // color: var (--accent-text-color);
-   color: #3e85f3;
- 
+  color: var(--accent-text-color);
 `;

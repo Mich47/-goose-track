@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import {
   DaysOfMonth,
   Today,
-  BoxTasks, Title,
+  BoxTasks,
+  Title,
   Task,
   MoreTasks,
 } from './CalendarTableItem.styled';
@@ -27,7 +28,6 @@ export const CalendarTableItem = ({ day, dayTasks, gridRowHeight }) => {
   const maxTasksInColumn = Math.floor(
     (gridRowHeight + borderHeight * 2 - columnPaddingTop) / taskHeight
   );
- 
 
   const countTasks = dayTasks?.length;
 
@@ -91,5 +91,5 @@ CalendarTableItem.propTypes = {
         title: PropTypes.string.isRequired,
       })
     ) || undefined.isRequired,
-    gridRowHeight: PropTypes.number.isRequired,
+  gridRowHeight: PropTypes.number.isRequired,
 };

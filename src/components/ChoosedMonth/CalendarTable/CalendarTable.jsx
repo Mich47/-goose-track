@@ -33,7 +33,6 @@ export const CalendarTable = () => {
   const dispath = useDispatch();
   const currentMonth = parseISO(useSelector(selectCurrentMonth));
   const isLoading = useSelector(selectIsLoading);
-
   const tasksOfMonth = useSelector(selectTasks);
 
   const monthStart = startOfMonth(currentMonth);

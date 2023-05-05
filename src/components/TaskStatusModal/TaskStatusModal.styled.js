@@ -34,7 +34,7 @@ export const Button = styled.button`
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
-  /* identical to box height, or 117% */
+
   color: var(--secondary-text-color);
 
   @media screen and (min-width: 768px) {

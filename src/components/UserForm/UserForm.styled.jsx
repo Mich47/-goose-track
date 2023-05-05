@@ -54,7 +54,7 @@ export const LabelSpan = styled.span`
 `;
 
 export const Label = styled.label`
-  font-family: 'Inter', serif;
+  font-family: var(--primary-font), serif;
   font-size: 12px;
   line-height: 1.2;
   display: flex;
@@ -66,7 +66,7 @@ export const Label = styled.label`
 `;
 
 export const Input = styled.input`
-  font-family: 'Inter', sans-serif;
+  font-family: var(--primary-font), sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 1.3;
@@ -152,7 +152,6 @@ export const LabelImg = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  /* overflow: hidden; */
   object-fit: cover;
 `;
 
@@ -164,8 +163,7 @@ export const LabelAva = styled.label`
   height: 72px;
 
   display: block;
-  /* margin: -36px auto 0 auto; */
-  /* overflow: hidden; */
+
   background-color: var(--avatar-background-color);
 
   @media (min-width: 768px) {
@@ -223,8 +221,7 @@ export const ArrowSvg = styled.svg`
 `;
 
 export const Button = styled.button`
-  font-family: 'Inter', sans-serif;
-  /* margin: 40px auto; */
+  font-family: var(--primary-font), sans-serif;
   display: block;
   width: 100%;
   max-width: 195px;
@@ -239,21 +236,15 @@ export const Button = styled.button`
   padding: 14px;
 
   &[disabled] {
-    background-color: #84828a;
+    background-color: var(--not-active-item-sidebar-text-color);
     opacity: 0.5;
     pointer-events: none;
   }
 
   @media (min-width: 768px) {
     padding: 15px;
-    // margin-top: 16px;
     max-width: 262px;
     max-height: 48px;
-    // margin-bottom: 40px;
-  }
-
-  @media (min-width: 1280px) {
-    /* margin: 64px auto 60px auto; */
   }
 
   transition: background-color var(--animation), box-shadow var(--animation);
@@ -268,7 +259,7 @@ export const TitleAvatar = styled.h3`
   font-weight: 700;
   font-size: 18px;
   line-height: 1;
-  //color: #343434;
+
   margin: 14px 0 0 0;
   text-align: center;
   color: var(--primary-text-color);
@@ -319,7 +310,7 @@ export const GlobalStyles = createGlobalStyle`
     left: 50%;
     top: 50%;
     transform: translate(-1%, 0%);
-    font-family: (var--primary-font);
+    font-family: var(--primary-font);
     padding: 12px;
     border-radius: 16px;
     background-color: var(--accent-background-color);
@@ -364,7 +355,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .react-datepicker__current-month {
-    font-family: Inter, serif;
+    font-family: var(--primary-font), serif;
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
@@ -379,7 +370,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .react-datepicker__day-name {
-    font-family: Inter, serif;
+    font-family: var(--primary-font), serif;
     font-weight: 600;
     font-size: 14px;
     line-height: 18px;
@@ -448,7 +439,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .react-datepicker__day {
-    font-family: Inter, serif;
+    font-family: var(--primary-font), serif;
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 0em;
@@ -485,8 +476,6 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .react-datepicker__day--selected {
-    /* transform: scale(1); */
-    /* border-radius: 50%; */
     background-color: var(--btn-text-color);
     color: var(--accent-background-color);
     font-size: 14px;
@@ -498,18 +487,18 @@ export const GlobalStyles = createGlobalStyle`
 
   .react-datepicker__day--selected:hover {
     border-radius: 50%;
-    background-color: white;
+    background-color: var(--primary-background-color);
   }
 
   .react-datepicker__day:hover {
     border-radius: 50%;
-    background-color: white;
+    background-color: var(--primary-background-color);
     color: var(--accent-background-color);
   }
 
   .react-datepicker__day--keyboard-selected {
     border-radius: 50%;
-    background-color: white;
+    background-color: var(--primary-background-color);
     color: var(--accent-background-color);
   }
 
@@ -549,7 +538,7 @@ export const StyledDatePick = styled(DatePicker)`
       return 'var(--border-color)';
     }};
   border-radius: 8px;
-  font-family: 'Inter', serif;
+  font-family: var(--primary-font), serif;
   font-style: normal;
 
   font-weight: 600;
@@ -592,7 +581,7 @@ export const StyledIconContainer = styled.div`
   height: 30px;
   border-radius: 50%;
   background-color: var(--primary-background-color);
-  /* box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); */
+
   cursor: pointer;
   @media screen and (min-width: 768px) {
     transform: translate(1045%, 108%);

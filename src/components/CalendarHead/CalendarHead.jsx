@@ -46,6 +46,7 @@ export const CalendarHead = ({ currentDay }) => {
       end: endOfISOWeek(new Date(), { weekStartsOn: 1 }),
     });
   }
+
   const List = currentDay ? ListDays : ListMonth;
   return (
     <>

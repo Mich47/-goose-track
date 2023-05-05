@@ -66,15 +66,6 @@ export const UserForm = () => {
 
   const formattedDate = format(new Date(birthday), 'yyyy-MM-dd');
 
-  // const handleUpload = async event => {
-  //   console.log('handleUpload ');
-  //   event.preventDefault();
-  //   if (!setImage) {
-  //     toast.error('Please select a file');
-  //     return true;
-  //   }
-  // };
-
   const FILE_SIZE = 2 * 1024 * 1024;
   const SUPPORTED_FORMATS = ['image/jpg', 'image/jpeg', 'image/png'];
 
@@ -210,9 +201,6 @@ export const UserForm = () => {
                   {...formik.getFieldProps('name')}
                 />
                 <Errors>{formik.touched.name && formik.errors.name}</Errors>
-                {/* {formik.touched.name && !formik.errors.name && (
-                <Success>Valid name</Success>
-              )} */}
               </Label>
 
               <BirthdayContainer>
@@ -256,9 +244,6 @@ export const UserForm = () => {
                 <Errors>
                   {formik.touched.birthday && formik.errors.birthday}
                 </Errors>
-                {/* {formik.touched.birthday && !formik.errors.birthday && (
-                <Success>Valid birthday</Success>
-              )} */}
               </BirthdayContainer>
 
               <Label htmlFor="email">
@@ -281,9 +266,6 @@ export const UserForm = () => {
                   {...formik.getFieldProps('email')}
                 />
                 <Errors>{formik.touched.email && formik.errors.email}</Errors>
-                {/* {formik.touched.email && !formik.errors.email && (
-                <Success>Valid email</Success>
-              )} */}
               </Label>
               <Label htmlFor="phone">
                 <LabelSpan
@@ -309,9 +291,6 @@ export const UserForm = () => {
                   {...formik.getFieldProps('phone')}
                 />
                 <Errors>{formik.touched.phone && formik.errors.phone}</Errors>
-                {/* {formik.touched.phone && !formik.errors.phone && (
-                <Success>Valid phone</Success>
-              )} */}
               </Label>
               <Label htmlFor="telegram">
                 <LabelSpan
@@ -339,18 +318,9 @@ export const UserForm = () => {
                 <Errors>
                   {formik.touched.telegram && formik.errors.telegram}
                 </Errors>
-                {/* {formik.touched.telegram && !formik.errors.telegram && (
-                <Success>Valid telegram</Success>
-              )} */}
               </Label>
             </FlexInput>
             <Button
-              // onSubmit={() => {
-              //   console.log('then ');
-              //   handleUpload().finally(() => {
-              //     setIsFormSubmitted(true);
-              //   });
-              // }}
               type="submit"
               disabled={!(formik.isValid && formik.dirty) || isLoading}
             >

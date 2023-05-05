@@ -139,10 +139,7 @@ export const RegisterForm = () => {
                     </STC.Errors>
                   </STC.Label>
 
-                  <STC.Label
-                    htmlFor="password"
-                    // error={errors.password && touched.password}
-                  >
+                  <STC.Label htmlFor="password">
                     <STC.Span
                       error={errors.password}
                       touched={touched.password}
@@ -162,7 +159,6 @@ export const RegisterForm = () => {
                         handleBlur(event);
                         setPasswordValidationCompleted(true);
                       }}
-                      // error={errors.password && touched.password}
                       error={errors.password}
                       touched={touched.password}
                     />

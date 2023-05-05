@@ -15,7 +15,6 @@ export const TaskForm = ({ onClose, ...props }) => {
   const dispatch = useDispatch();
   const editMode = props?.editMode || false;
   const status = props?.status || 'To do';
-  
 
   const initialValues = {
     title: props?.title || '',
@@ -90,7 +89,6 @@ export const TaskForm = ({ onClose, ...props }) => {
           handleSubmit,
           isSubmitting,
           setFieldValue,
-          /* and other goodies */
         }) => (
           <STC.Form onSubmit={handleSubmit}>
             <STC.Label htmlFor="title">

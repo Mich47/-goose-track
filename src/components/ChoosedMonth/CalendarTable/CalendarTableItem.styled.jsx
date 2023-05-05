@@ -5,17 +5,21 @@ export const DaysOfMonth = styled.div`
   position: absolute;
   top: 8px;
   right: 4px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 24px;
   height: 24px;
   padding: 4px 6px;
 
   border-radius: 6px;
+
   @media (min-width: 768px) {
     top: 12px;
     right: 14px;
+
     width: 27px;
     height: 26px;
 
@@ -29,14 +33,15 @@ export const Today = styled(DaysOfMonth)`
   color: var(--btn-text-color);
 `;
 export const BoxTasks = styled.ul`
-  width: 100%;
-  height: 100%;
-  padding-top: ${props => props.columnPaddingTop}px;
   display: grid;
   justify-items: center;
   grid-template-columns: 1fr;
   grid-auto-rows: 20px;
   grid-gap: 2px;
+
+  width: 100%;
+  height: 100%;
+  padding-top: ${props => props.columnPaddingTop}px;
 
   @media (min-width: 768px) {
     grid-auto-rows: 24px;
@@ -52,6 +57,7 @@ export const Task = styled.li`
 
   width: 95%;
   padding: 0 4px;
+
   background: var(
     ${props => {
       if (props.priority === TASK_PRIORITY.medium) {
@@ -65,8 +71,9 @@ export const Task = styled.li`
   );
   border-radius: 8px;
   @media (min-width: 768px) {
-    width: 90%;
     grid-template-rows: minmax(auto, 11px);
+
+    width: 90%;
     padding: 0 6px;
   }
   @media (min-width: 1280px) {
@@ -78,6 +85,7 @@ export const Title = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+
   font-family: var(--primary-font);
   font-style: normal;
   font-weight: 500;
@@ -101,6 +109,7 @@ export const Title = styled.p`
 `;
 export const MoreTasks = styled.p`
   margin-top: 4px;
+
   white-space: nowrap;
 
   font-family: var(--primary-font);
@@ -109,11 +118,13 @@ export const MoreTasks = styled.p`
   line-height: 1;
   @media (min-width: 768px) {
     margin-top: 6.5px;
+
     font-weight: 600;
     font-size: 12px;
   }
   @media (min-width: 1280px) {
     margin-top: 4px;
+
     font-size: 14px;
   }
 `;

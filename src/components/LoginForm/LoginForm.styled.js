@@ -137,7 +137,6 @@ export const Button = styled.button`
   }
 
   @media (min-width: 768px) {
-    /* width: 400px; */
     height: 56px;
     margin-top: 30px;
   }
